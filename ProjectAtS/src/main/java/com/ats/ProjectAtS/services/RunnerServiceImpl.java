@@ -38,6 +38,14 @@ public class RunnerServiceImpl implements RunnerService {
 		runnerUpdated.setIdRunner(id);
 		dao.save(runnerUpdated);
 	}
+	
+	@Override
+	public void assignClub(Integer idRunner, Integer idClub) throws NotFound {
+		final Runner runner = dao.findById(idRunner).orElseThrow(NotFound::new);
+		final Club club = ClubService.findById(idClub);
+		runner.setClub(club);
+		dao.save(runner);
+	}
 
 	@Override
 	public void delete(Integer id) {

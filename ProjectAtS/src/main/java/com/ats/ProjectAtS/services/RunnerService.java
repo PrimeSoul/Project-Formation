@@ -17,6 +17,8 @@ public interface RunnerService {
 	Optional<Runner> findById(Integer id);
 
 	void update (Integer id, Runner runner) throws NotFound;
+
+	void assignClub(Integer idRunner, Integer idClub) throws NotFound;
 	
 	void delete (Integer id);
 	

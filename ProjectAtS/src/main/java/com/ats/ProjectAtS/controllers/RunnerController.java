@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ats.ProjectAtS.DTOs.RunnerDTO;
 import com.ats.ProjectAtS.exceptions.NotFound;
+import com.ats.ProjectAtS.mappers.RunnerMapper;
 import com.ats.ProjectAtS.models.Runner;
 import com.ats.ProjectAtS.services.RunnerService;
 
@@ -54,6 +56,11 @@ public class RunnerController {
 	public void update(@RequestBody RunnerDTO runnerUpdated, @PathVariable Integer idRunner) throws NotFound {
 		final Runner runner = runnerMapper.mapToModel(runnerUpdated);
 		runnerService.update(idRunner, runner);
+	}
+	
+	@PutMapping("/{idRunner}/{idClub}")
+	public void assignClub(@PathVariable Integer idRunner, @PathVariable Integer idClub) throws NotFound {
+		runnerService.assignClub(idRunner, idClub);
 	}
 
 	@DeleteMapping("/{idRunner}")
