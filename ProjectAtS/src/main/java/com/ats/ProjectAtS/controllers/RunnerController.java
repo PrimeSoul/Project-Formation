@@ -34,7 +34,7 @@ public class RunnerController {
 	public List<RunnerDTO> findAll(
 			@RequestParam(defaultValue = "0", value = "page", required = false) Integer page,
 			@RequestParam(defaultValue = "5", value = "size", required = false) Integer size,
-			@RequestParam(value = "name", required = false) String name) {
+			@RequestParam(defaultValue = "", value = "name", required = false) String name) {
 		final List<Runner> runners = runnerService.findAll(PageRequest.of(page, size), name);
 		return runnerMapper.mapToDTO(runners);
 	}

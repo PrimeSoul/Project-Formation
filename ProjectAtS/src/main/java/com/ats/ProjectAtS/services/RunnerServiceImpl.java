@@ -24,7 +24,7 @@ public class RunnerServiceImpl implements RunnerService {
 
 	@Override
 	public List<Runner> findAll(Pageable page, String name) {
-		return dao.findByNameContaining(page, name).getContent();
+		return dao.findByNameContaining(name, page).getContent();
 	}
 
 	@Override
@@ -34,22 +34,28 @@ public class RunnerServiceImpl implements RunnerService {
 
 	@Override
 	public void update(Integer id, Runner runnerUpdated) throws NotFound {
-		dao.findById(id).orElseThrow(NotFound::new);
+		dao.findById(id).orElseThrow(() -> new NotFound("Error: Runner does not exist."));
 		runnerUpdated.setIdRunner(id);
 		dao.save(runnerUpdated);
 	}
 	
-	@Override
+	/*@Override
 	public void assignClub(Integer idRunner, Integer idClub) throws NotFound {
 		final Runner runner = dao.findById(idRunner).orElseThrow(NotFound::new);
 		final Club club = ClubService.findById(idClub);
 		runner.setClub(club);
 		dao.save(runner);
-	}
+	}*/
 
 	@Override
 	public void delete(Integer id) {
 		dao.deleteById(id);
+	}
+
+	@Override
+	public void assignClub(Integer idRunner, Integer idClub) throws NotFound {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

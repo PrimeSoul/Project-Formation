@@ -1,23 +1,19 @@
 package com.ats.ProjectAtS.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@IdClass(UniqueScore.class)
 @Entity
-public class Score implements Serializable {
-	
-	private static final long serialVersionUID = -6783149490762593702L;
+public class Score {
 
 	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
