@@ -34,7 +34,8 @@ public class RunnerServiceImpl implements RunnerService {
 
 	@Override
 	public void update(Integer id, Runner runnerUpdated) throws NotFound {
-		Runner runner = dao.findById(id).orElseThrow(NotFound::new);
+		dao.findById(id).orElseThrow(NotFound::new);
+		runnerUpdated.setIdRunner(id);
 		dao.save(runnerUpdated);
 	}
 
