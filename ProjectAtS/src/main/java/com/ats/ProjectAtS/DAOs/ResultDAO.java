@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ats.ProjectAtS.models.Result;
+import com.ats.ProjectAtS.models.Trial;
 
 @Repository
 public interface ResultDAO extends JpaRepository<Result, Integer> {
@@ -18,5 +19,7 @@ public interface ResultDAO extends JpaRepository<Result, Integer> {
 			@Param("min") Integer min,
 			@Param("max") Integer max,
 			@Param("yearNow") Integer yearNow);
+	
+	List<Result> findByTrial(Trial trial);
 	
 }
