@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 import lombok.Data;
 
+/**
+ * Clase utilizada para crear una clave primaria compuesta para la tabla de Score.
+ * Cada prueba tendrá una serie de puestos con valores diferentes.
+ * @author Alexander
+ *
+ */
+
 @Data
 public class UniqueScore implements Serializable {
 
