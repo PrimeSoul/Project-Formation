@@ -37,8 +37,9 @@ public class RunnerServiceImpl implements RunnerService {
 
 	@Override
 	public void update(Integer id, Runner runnerUpdated) throws NotFound {
-		dao.findById(id).orElseThrow(() -> new NotFound("Error: Runner does not exist."));
+		final Runner runner = dao.findById(id).orElseThrow(() -> new NotFound("Error: Runner does not exist."));
 		runnerUpdated.setIdRunner(id);
+		runnerUpdated.setClub(runner.getClub());
 		dao.save(runnerUpdated);
 	}
 	

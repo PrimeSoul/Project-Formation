@@ -58,7 +58,7 @@ public class RunnerController {
 		runnerService.update(idRunner, runner);
 	}
 	
-	@PutMapping("/{idRunner}/{idClub}")
+	@PutMapping("/{idRunner}/club/{idClub}")
 	public void assignClub(@PathVariable Integer idRunner, @PathVariable Integer idClub) throws NotFound {
 		runnerService.assignClub(idRunner, idClub);
 	}

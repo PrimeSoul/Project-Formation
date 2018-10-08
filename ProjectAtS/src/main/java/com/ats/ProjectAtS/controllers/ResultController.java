@@ -1,6 +1,10 @@
 package com.ats.ProjectAtS.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +24,11 @@ public class ResultController {
 	@Autowired
 	ResultMapper resultMapper;
 	
-	/*@GetMapping
-	public List<ResultDTO> findAll() {
-
-	}*/
+	@GetMapping("/trial/{idTrial}/master/{master}")
+	public List<ResultDTO> getResultsByMaster(@PathVariable Integer idTrial, @PathVariable Integer master) {
+		final List<Result> results = resultService.getResultsByMaster(idTrial, master);
+		return resultMapper.mapToDTO(results);
+	}
 	
 	@PostMapping
 	public ResultDTO create(@RequestBody ResultDTO ResultCreated) {
