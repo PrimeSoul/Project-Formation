@@ -25,6 +25,12 @@ public class ResultController {
 	@Autowired
 	ResultMapper resultMapper;
 	
+	@GetMapping
+	public List<ResultDTO> findAll() {
+		final List<Result> results = resultService.findAll();
+		return resultMapper.mapToDTO(results);
+	}
+	
 	@GetMapping("/trial/{idTrial}")
 	public void getResultsIntoTxt (@PathVariable Integer idTrial) throws NotFound {
 		resultService.getResultsIntoTxt(idTrial);

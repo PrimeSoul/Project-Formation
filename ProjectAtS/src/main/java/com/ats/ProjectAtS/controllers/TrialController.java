@@ -1,6 +1,10 @@
 package com.ats.ProjectAtS.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,12 @@ public class TrialController {
 	TrialService trialService;
 	@Autowired
 	TrialMapper trialMapper;
+	
+	@GetMapping("/{idTrial}")
+	public TrialDTO findById(@PathVariable Integer idTrial) {
+		final Optional<Trial> trial = trialService.findById(idTrial);
+		return trialMapper.mapToDTO(trial.get());
+	}
 	
 	@PostMapping
 	public TrialDTO create(@RequestBody TrialDTO TrialCreated) {

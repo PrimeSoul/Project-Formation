@@ -22,8 +22,6 @@ import com.ats.ProjectAtS.models.Result;
 import com.ats.ProjectAtS.models.Score;
 import com.ats.ProjectAtS.models.Trial;
 
-
-
 @Service
 public class ResultServiceImpl implements ResultService {
 
@@ -37,6 +35,11 @@ public class ResultServiceImpl implements ResultService {
 	@Override
 	public Result create(Result result) {
 		return dao.save(result);
+	}
+	
+	@Override
+	public List<Result> findAll() {
+		return dao.findAll();
 	}
 	
 	@Override

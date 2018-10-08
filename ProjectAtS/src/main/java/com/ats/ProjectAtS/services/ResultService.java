@@ -9,6 +9,8 @@ public interface ResultService {
 	
 	Result create (Result result);
 	
+	List<Result> findAll();
+	
 	void getResultsIntoTxt (Integer idTrial) throws NotFound;
 	
 	List<Result> getResultsByMaster(Integer idTrial, Integer master);
