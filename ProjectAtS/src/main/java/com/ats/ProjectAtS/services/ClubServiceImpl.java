@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ats.ProjectAtS.DAOs.ClubDAO;
+import com.ats.ProjectAtS.exceptions.NotFound;
 import com.ats.ProjectAtS.models.Club;
 
 @Service
