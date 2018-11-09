@@ -85,8 +85,9 @@ public class ResultServiceImpl implements ResultService {
 	}
 
 	@Override
-	public List<Result> getResultsByMaster(Integer idTrial, Integer master) {
-		Date date = trialService.findById(idTrial).get().getDate();
+	public List<Result> getResultsByMaster(Integer idTrial, Integer master) throws NotFound {
+		Trial trial = trialService.findById(idTrial).orElseThrow(() -> new NotFound("Error: Trial does not exist."));
+		Date date = trial.getDate();
 		String[] dateApart = date.toString().split("-");
 		Integer yearTrial = Integer.parseInt(dateApart[0]);
 		Integer difference = 10;

@@ -36,6 +36,6 @@ public interface ResultService {
 	 * @param master : número que nos indica la categoría del master.
 	 * @return Devuelve los resultados de una categoría.
 	 */
-	List<Result> getResultsByMaster(Integer idTrial, Integer master);
+	List<Result> getResultsByMaster(Integer idTrial, Integer master) throws NotFound;
 	
 }

@@ -37,7 +37,7 @@ public class ResultController {
 	}
 	
 	@GetMapping("/trial/{idTrial}/master/{master}")
-	public List<ResultDTO> getResultsByMaster(@PathVariable Integer idTrial, @PathVariable Integer master) {
+	public List<ResultDTO> getResultsByMaster(@PathVariable Integer idTrial, @PathVariable Integer master) throws NotFound {
 		final List<Result> results = resultService.getResultsByMaster(idTrial, master);
 		return resultMapper.mapToDTO(results);
 	}
